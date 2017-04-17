@@ -1,13 +1,16 @@
 package com.github.tadaskay.puzzle15;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class LangUtil {
 
-    static int[][] deepCloneSquare(int[][] array) {
-        int length = array.length;
-        int[][] clone = new int[length][length];
-        for (int row = 0; row < length; row++) {
-            System.arraycopy(array[row], 0, clone[row], 0, length);
+    static <T> List<List<T>> array2dToList(T[][] array) {
+        List<List<T>> result = new ArrayList<>();
+        for (T[] row : array) {
+            result.add(Arrays.asList(row));
         }
-        return clone;
+        return result;
     }
 }

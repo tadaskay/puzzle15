@@ -3,43 +3,33 @@ package com.github.tadaskay.puzzle15;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static com.github.tadaskay.puzzle15.LangUtil.array2dToList;
 
 class Puzzle {
 
     @Id
     private String id;
-
     private int size;
     private List<List<Integer>> tiles;
 
     private Position blankPosition;
 
-    static Puzzle create(int[][] initialTiles) {
+    static Puzzle create(Integer[][] initialTiles) {
         Puzzle puzzle = new Puzzle();
         puzzle.blankPosition = validate(initialTiles);
         puzzle.size = initialTiles.length;
-
-        List<List<Integer>> tiles = new ArrayList<>(puzzle.size);
-        for (int[] row : initialTiles) {
-            List<Integer> tileRow = new ArrayList<>(puzzle.size);
-            for (int val : row) {
-                tileRow.add(val);
-            }
-            tiles.add(tileRow);
-        }
-        puzzle.tiles = tiles;
-
+        puzzle.tiles = array2dToList(initialTiles);
         return puzzle;
     }
 
     /**
-     * Validates state in a single pass and return the position of the blank
+     * Validates state in a single pass and returns the position of the blank
      */
-    private static Position validate(int[][] state) {
+    private static Position validate(Integer[][] state) {
         int size = state.length;
         Assert.isTrue(size > 0, "Puzzle's state cannot be empty");
 
@@ -47,7 +37,7 @@ class Puzzle {
         Set<Integer> seenNumbers = new HashSet<>();
 
         for (int row = 0; row < size; row++) {
-            Assert.isTrue(state[row].length == size, "Puzzle must be square with size=" + size);
+            Assert.isTrue(state[row].length == size, "Puzzle must be square");
 
             for (int column = 0; column < size; column++) {
                 int number = state[row][column];
@@ -68,7 +58,7 @@ class Puzzle {
         int lastNumber = 0;
         for (int row = 0; row < size; row++) {
             for (int column = 0; column < size; column++) {
-                int number = tiles.get(row).get(column);
+                int number = getTileAt(Position.of(column, row));
                 if (number > lastNumber) {
                     lastNumber = number;
                     continue;
@@ -128,10 +118,18 @@ class Puzzle {
     }
 
     private void swapTiles(Position p1, Position p2) {
-        int num1 = tiles.get(p1.y()).get(p1.x());
-        int num2 = tiles.get(p2.y()).get(p2.x());
-        tiles.get(p1.y()).set(p1.x(), num2);
-        tiles.get(p2.y()).set(p2.x(), num1);
+        int num1 = getTileAt(p1);
+        int num2 = getTileAt(p2);
+        setTileAt(p1, num2);
+        setTileAt(p2, num1);
+    }
+
+    private int getTileAt(Position pos) {
+        return tiles.get(pos.y()).get(pos.x());
+    }
+
+    private void setTileAt(Position pos, Integer value) {
+        tiles.get(pos.y()).set(pos.x(), value);
     }
 
     public int getSize() {
@@ -142,7 +140,7 @@ class Puzzle {
         return id;
     }
 
-    List<List<Integer>> getTiles() {
+    public List<List<Integer>> getTiles() {
         return tiles;
     }
 }

@@ -4,6 +4,10 @@ class Position {
 
     private final int x, y;
 
+    static Position of(int x, int y) {
+        return new Position(x, y);
+    }
+
     Position(int x, int y) {
         this.x = x;
         this.y = y;

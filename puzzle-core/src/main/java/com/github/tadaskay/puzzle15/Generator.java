@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 interface Generator {
 
-    int[][] generateTiles();
+    Integer[][] generateTiles();
 
 }
 
@@ -12,11 +12,11 @@ interface Generator {
 class DefaultGenerator implements Generator {
 
     @Override
-    public int[][] generateTiles() {
-        return new int[][]{
-            new int[]{1, 2, 3},
-            new int[]{4, 5, 6},
-            new int[]{0, 7, 8},
+    public Integer[][] generateTiles() {
+        return new Integer[][]{
+            new Integer[]{1, 2, 3},
+            new Integer[]{4, 5, 6},
+            new Integer[]{0, 7, 8},
         };
     }
 }

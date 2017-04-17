@@ -9,24 +9,24 @@ public class PuzzleTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cantCreateEmptyPuzzle() {
-        Puzzle.create(new int[][]{});
+        Puzzle.create(new Integer[][]{});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cantCreatePuzzleWithMismatchingDimensions() {
-        Puzzle.create(new int[][]{
-            new int[]{0, 1},
-            new int[]{4, 2, 5},
-            new int[]{6, 7, 3},
+        Puzzle.create(new Integer[][]{
+            new Integer[]{0, 1},
+            new Integer[]{4, 2, 5},
+            new Integer[]{6, 7, 3},
         });
     }
 
     @Test
     public void solvable2x2puzzle() {
         // given
-        int[][] shuffle = {
-            new int[]{0, 1},
-            new int[]{3, 2},
+        Integer[][] shuffle = {
+            new Integer[]{0, 1},
+            new Integer[]{3, 2},
         };
 
         // when

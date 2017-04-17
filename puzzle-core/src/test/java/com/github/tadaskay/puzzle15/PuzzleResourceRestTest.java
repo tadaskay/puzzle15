@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
@@ -20,7 +21,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class PuzzleRestTest {
+public class PuzzleResourceRestTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -30,15 +31,16 @@ public class PuzzleRestTest {
     @Test
     public void solve2x2Puzzle() {
         // given
-        when(generator.generateTiles()).thenReturn(new int[][]{
-            new int[]{0, 1},
-            new int[]{3, 2},
+        when(generator.generateTiles()).thenReturn(new Integer[][]{
+            new Integer[]{0, 1},
+            new Integer[]{3, 2},
         });
 
         // when
         ResponseEntity<PuzzleRepresentation> res = restTemplate.postForEntity("/api/puzzles", null, PuzzleRepresentation.class);
         PuzzleRepresentation puzzle = res.getBody();
         // then
+        assertThat(res.getHeaders().getLocation(), notNullValue());
         assertThat(res.getStatusCode(), is(CREATED));
         assertThat(puzzle.isComplete(), is(false));
         assertThat(puzzle.getTiles().size(), is(2));
@@ -71,6 +73,8 @@ public class PuzzleRestTest {
         puzzle = res.getBody();
         // then
         assertThat(res.getStatusCode().is2xxSuccessful(), is(true));
+        assertThat(puzzle.getTiles().get(0), hasItems(1, 2));
+        assertThat(puzzle.getTiles().get(1), hasItems(3, 0));
         assertThat(puzzle.isComplete(), is(true));
     }
 }
