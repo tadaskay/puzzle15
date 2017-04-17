@@ -76,7 +76,9 @@ class Puzzle {
     }
 
     void moveUp() {
-        moveBlankTile(0, 1);
+        if (canMoveUp()) {
+            moveBlankTile(0, 1);
+        }
     }
 
     boolean canMoveDown() {
@@ -84,7 +86,9 @@ class Puzzle {
     }
 
     void moveDown() {
-        moveBlankTile(0, -1);
+        if (canMoveDown()) {
+            moveBlankTile(0, -1);
+        }
     }
 
     boolean canMoveLeft() {
@@ -92,7 +96,9 @@ class Puzzle {
     }
 
     void moveLeft() {
-        moveBlankTile(1, 0);
+        if (canMoveLeft()) {
+            moveBlankTile(1, 0);
+        }
     }
 
     boolean canMoveRight() {
@@ -100,7 +106,9 @@ class Puzzle {
     }
 
     void moveRight() {
-        moveBlankTile(-1, 0);
+        if (canMoveRight()) {
+            moveBlankTile(-1, 0);
+        }
     }
 
     private boolean first(int rowOrColumn) {

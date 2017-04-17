@@ -1,5 +1,6 @@
 package com.github.tadaskay.puzzle15;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,18 @@ class LangUtil {
             result.add(Arrays.asList(row));
         }
         return result;
+    }
+
+    /**
+     * NOTE: Assumes square
+     */
+    static <T> T[][] list2dToArray(List<List<T>> list, Class<T> componentType) {
+        T[][] array2d = (T[][]) Array.newInstance(componentType, list.size(), list.size());
+        for (int row = 0; row < list.size(); row++) {
+            T[] rowToArray = (T[]) list.get(row).toArray();
+            array2d[row] = rowToArray;
+        }
+        return array2d;
     }
 
     static Integer[] flatten(Integer[][] original) {
