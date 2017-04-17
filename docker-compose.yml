@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  core:
+    build:
+      context: .
+      dockerfile: puzzle-core/Dockerfile
+    entrypoint: java -jar puzzle-core/build/libs/puzzle-core-1.0.jar
+    ports:
+      - 8080:8080

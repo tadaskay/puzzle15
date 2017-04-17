@@ -14,11 +14,11 @@ number 1 is at the top-left corner and the empty one is at the bottom-right.
 
 Pre-requisites:
 
-- JDK8
+- docker
+- docker-compose
 
 ```
-$ ./gradlew build
-$ ./gradlew bootRun
+$ docker-compose up
 ```
 
 After startup, the following are accessible:
