@@ -13,4 +13,12 @@ class LangUtil {
         }
         return result;
     }
+
+    static Integer[] flatten(Integer[][] original) {
+        Integer[] flat = new Integer[original.length * original.length];
+        for (int row = 0; row < original.length; row++) {
+            System.arraycopy(original[row], 0, flat, original.length * row, original.length);
+        }
+        return flat;
+    }
 }

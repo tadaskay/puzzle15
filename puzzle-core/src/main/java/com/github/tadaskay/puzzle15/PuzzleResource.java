@@ -1,6 +1,7 @@
 package com.github.tadaskay.puzzle15;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -16,15 +17,21 @@ class PuzzleResource {
 
     private final PuzzleRepository repository;
     private final Generator generator;
+    private final SolvabilityChecker checker;
 
-    PuzzleResource(PuzzleRepository repository, Generator generator) {
+    PuzzleResource(PuzzleRepository repository,
+                   Generator generator,
+                   SolvabilityChecker checker) {
         this.repository = repository;
         this.generator = generator;
+        this.checker = checker;
     }
 
     @PostMapping("/puzzles")
     ResponseEntity<PuzzleRepresentation> newPuzzle(UriComponentsBuilder uriBuilder) {
-        Puzzle puzzle = Puzzle.create(generator.generateTiles());
+        Integer[][] generated = generator.generateTiles();
+        Assert.isTrue(checker.isSolvable(generated), "Unsolvable puzzle tiles have been generated");
+        Puzzle puzzle = Puzzle.create(generated);
         puzzle = repository.save(puzzle);
 
         URI location = uriBuilder.path("/urls/{id}").buildAndExpand(puzzle.getId()).toUri();
