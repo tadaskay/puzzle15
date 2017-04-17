@@ -13,7 +13,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api")
-class PuzzleResource {
+public class PuzzleResource {
 
     private final PuzzleRepository repository;
     private final Generator generator;
@@ -28,10 +28,10 @@ class PuzzleResource {
     }
 
     @PostMapping("/puzzles")
-    ResponseEntity<PuzzleRepresentation> newPuzzle(UriComponentsBuilder uriBuilder) {
-        Integer[][] generated = generator.generateTiles();
-        Assert.isTrue(checker.isSolvable(generated), "Unsolvable puzzle tiles have been generated");
-        Puzzle puzzle = Puzzle.create(generated);
+    public ResponseEntity<PuzzleRepresentation> newPuzzle(UriComponentsBuilder uriBuilder) {
+        Integer[][] tiles = generator.generateTiles();
+        Assert.isTrue(checker.isSolvable(tiles), "Unsolvable puzzle tiles have been generated");
+        Puzzle puzzle = Puzzle.create(tiles);
         puzzle = repository.save(puzzle);
 
         URI location = uriBuilder.path("/urls/{id}").buildAndExpand(puzzle.getId()).toUri();
@@ -39,14 +39,14 @@ class PuzzleResource {
     }
 
     @GetMapping("/puzzles/{id}")
-    ResponseEntity<PuzzleRepresentation> get(@PathVariable("id") String id) {
+    public ResponseEntity<PuzzleRepresentation> get(@PathVariable("id") String id) {
         Puzzle puzzle = repository.requireOne(id);
         return ResponseEntity.ok(represent(puzzle));
     }
 
     @PutMapping("/puzzles/{id}/move/{direction}")
-    ResponseEntity<PuzzleRepresentation> move(@PathVariable("id") String id,
-                                              @PathVariable("direction") Direction direction) {
+    public ResponseEntity<PuzzleRepresentation> move(@PathVariable("id") String id,
+                                                     @PathVariable("direction") Direction direction) {
         Puzzle puzzle = repository.requireOne(id);
         switch (direction) {
             case up:
@@ -83,6 +83,7 @@ class PuzzleResource {
         if (puzzle.canMoveLeft()) {
             rep.add(linkTo(methodOn(PuzzleResource.class).move(puzzle.getId(), left)).withRel("move-left"));
         }
+        rep.add(linkTo(methodOn(PuzzleResource.class).get(puzzle.getId())).withSelfRel());
         return rep;
     }
 
