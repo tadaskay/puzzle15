@@ -16,4 +16,12 @@ class Position {
     int y() {
         return y;
     }
+
+    Position moveX(int delta) {
+        return new Position(x + delta, y);
+    }
+
+    Position moveY(int delta) {
+        return new Position(x, y + delta);
+    }
 }

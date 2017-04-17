@@ -76,6 +76,7 @@ class Puzzle {
     }
 
     void moveUp() {
+        moveBlankTile(0, 1);
     }
 
     boolean canMoveDown() {
@@ -83,6 +84,7 @@ class Puzzle {
     }
 
     void moveDown() {
+        moveBlankTile(0, -1);
     }
 
     boolean canMoveLeft() {
@@ -90,6 +92,7 @@ class Puzzle {
     }
 
     void moveLeft() {
+        moveBlankTile(1, 0);
     }
 
     boolean canMoveRight() {
@@ -97,6 +100,7 @@ class Puzzle {
     }
 
     void moveRight() {
+        moveBlankTile(-1, 0);
     }
 
     private boolean first(int rowOrColumn) {
@@ -107,4 +111,16 @@ class Puzzle {
         return rowOrColumn == side - 1;
     }
 
+    private void moveBlankTile(int dx, int dy) {
+        Position numberPosition = blankPosition.moveX(dx).moveY(dy);
+        swapTiles(numberPosition, blankPosition);
+        blankPosition = numberPosition;
+    }
+
+    private void swapTiles(Position p1, Position p2) {
+        int num1 = tiles[p1.y()][p1.x()];
+        int num2 = tiles[p2.y()][p2.x()];
+        tiles[p1.y()][p1.x()] = num2;
+        tiles[p2.y()][p2.x()] = num1;
+    }
 }
