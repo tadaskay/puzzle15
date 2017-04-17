@@ -9,12 +9,12 @@ public class PuzzleTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cantCreateEmptyPuzzle() {
-        new Puzzle(new int[][]{});
+        Puzzle.create(new int[][]{});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cantCreatePuzzleWithMismatchingDimensions() {
-        new Puzzle(new int[][]{
+        Puzzle.create(new int[][]{
             new int[]{0, 1},
             new int[]{4, 2, 5},
             new int[]{6, 7, 3},
@@ -30,7 +30,7 @@ public class PuzzleTest {
         };
 
         // when
-        Puzzle puzzle = new Puzzle(shuffle);
+        Puzzle puzzle = Puzzle.create(shuffle);
         // then
         assertFalse(puzzle.isCompleted());
         assertTrue(puzzle.canMoveLeft());
