@@ -1,4 +1,6 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
+
+import com.github.tadaskay.puzzle15.lang.HalResource;
 
 import java.util.List;
 

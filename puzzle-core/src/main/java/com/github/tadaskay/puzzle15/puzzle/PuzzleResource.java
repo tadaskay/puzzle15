@@ -1,4 +1,4 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
@@ -7,7 +7,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-import static com.github.tadaskay.puzzle15.PuzzleResource.Direction.*;
+import static com.github.tadaskay.puzzle15.puzzle.PuzzleResource.Direction.*;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 

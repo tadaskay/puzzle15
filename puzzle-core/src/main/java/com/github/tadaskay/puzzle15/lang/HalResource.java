@@ -1,4 +1,4 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.lang;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.hateoas.Link;
@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-class HalResource {
+public class HalResource {
 
     @JsonProperty("_links")
     private final List<Link> links = new ArrayList<>();

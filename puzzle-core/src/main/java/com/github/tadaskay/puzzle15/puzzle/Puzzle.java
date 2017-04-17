@@ -1,5 +1,6 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
+import com.github.tadaskay.puzzle15.lang.Position;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.Assert;
 
@@ -7,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.github.tadaskay.puzzle15.LangUtil.array2dToList;
+import static com.github.tadaskay.puzzle15.lang.ArrayUtil.array2dToList;
 
 class Puzzle {
 
@@ -45,7 +46,7 @@ class Puzzle {
                 seenNumbers.add(number);
 
                 if (number == 0) {
-                    blankPosition = new Position(column, row);
+                    blankPosition = Position.of(column, row);
                 }
             }
         }

@@ -1,5 +1,6 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
+import com.github.tadaskay.puzzle15.lang.ArrayUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ class DefaultGenerator implements Generator {
             destiny.run();
         }
 
-        Integer[][] shuffledTiles = LangUtil.list2dToArray(puzzle.getTiles(), Integer.class);
+        Integer[][] shuffledTiles = ArrayUtil.list2dToArray(puzzle.getTiles(), Integer.class);
         return shuffledTiles;
     }
 

@@ -1,4 +1,4 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +7,8 @@ import org.junit.runners.Parameterized.Parameter;
 
 import java.util.List;
 
-import static com.github.tadaskay.puzzle15.SolvabilityCheckerTest.Params.solvable;
-import static com.github.tadaskay.puzzle15.SolvabilityCheckerTest.Params.unsolvable;
+import static com.github.tadaskay.puzzle15.puzzle.SolvabilityCheckerTest.Params.solvable;
+import static com.github.tadaskay.puzzle15.puzzle.SolvabilityCheckerTest.Params.unsolvable;
 import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

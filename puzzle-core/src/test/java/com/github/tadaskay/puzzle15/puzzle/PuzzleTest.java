@@ -1,4 +1,4 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
 import org.junit.Test;
 

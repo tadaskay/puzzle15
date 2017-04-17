@@ -1,8 +1,8 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.puzzle;
 
 import org.springframework.stereotype.Component;
 
-import static com.github.tadaskay.puzzle15.LangUtil.flatten;
+import static com.github.tadaskay.puzzle15.lang.ArrayUtil.flatten;
 
 interface SolvabilityChecker {
     boolean isSolvable(Integer[][] tiles);

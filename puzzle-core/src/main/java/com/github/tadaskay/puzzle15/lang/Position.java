@@ -1,10 +1,10 @@
-package com.github.tadaskay.puzzle15;
+package com.github.tadaskay.puzzle15.lang;
 
-class Position {
+public class Position {
 
     private final int x, y;
 
-    static Position of(int x, int y) {
+    public static Position of(int x, int y) {
         return new Position(x, y);
     }
 
@@ -13,19 +13,19 @@ class Position {
         this.y = y;
     }
 
-    int x() {
+    public int x() {
         return x;
     }
 
-    int y() {
+    public int y() {
         return y;
     }
 
-    Position moveX(int delta) {
+    public Position moveX(int delta) {
         return new Position(x + delta, y);
     }
 
-    Position moveY(int delta) {
+    public Position moveY(int delta) {
         return new Position(x, y + delta);
     }
 }
