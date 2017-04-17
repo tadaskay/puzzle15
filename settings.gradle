@@ -1,0 +1,4 @@
+rootProject.name = 'puzzle15'
+
+include 'puzzle-core'
+include 'puzzle-ui'
