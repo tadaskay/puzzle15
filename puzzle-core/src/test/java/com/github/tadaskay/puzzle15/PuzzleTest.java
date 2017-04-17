@@ -8,18 +8,16 @@ import static org.junit.Assert.assertTrue;
 public class PuzzleTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void cantCreateNegativeSidePuzzle() {
-        new Puzzle(-1, new int[][]{
-            new int[]{0, 1},
-            new int[]{3, 2},
-        });
+    public void cantCreateEmptyPuzzle() {
+        new Puzzle(new int[][]{});
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cantCreatePuzzleWithMismatchingDimensions() {
-        new Puzzle(3, new int[][]{
+        new Puzzle(new int[][]{
             new int[]{0, 1},
-            new int[]{3, 2},
+            new int[]{4, 2, 5},
+            new int[]{6, 7, 3},
         });
     }
 
@@ -32,7 +30,7 @@ public class PuzzleTest {
         };
 
         // when
-        Puzzle puzzle = new Puzzle(2, shuffle);
+        Puzzle puzzle = new Puzzle(shuffle);
         // then
         assertFalse(puzzle.isCompleted());
         assertTrue(puzzle.canMoveLeft());

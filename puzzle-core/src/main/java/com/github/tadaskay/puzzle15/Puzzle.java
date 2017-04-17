@@ -3,6 +3,9 @@ package com.github.tadaskay.puzzle15;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.Assert;
 
+import java.util.HashSet;
+import java.util.Set;
+
 class Puzzle {
 
     @Id
@@ -13,30 +16,38 @@ class Puzzle {
 
     private Position blankPosition;
 
-    Puzzle(int side, int[][] initialState) {
-        assertValidPuzzle(side, initialState);
+    Puzzle(int[][] initialState) {
+        this.blankPosition = validate(initialState);
+        this.side = initialState.length;
         this.tiles = LangUtil.deepCloneSquare(initialState);
-        this.side = side;
-        this.blankPosition = find(0);
     }
 
-    private static void assertValidPuzzle(int side, int[][] initialState) {
-        Assert.isTrue(side > 0, "Puzzle side must be a positive integer");
-        Assert.isTrue(initialState.length == side, "Puzzle must be square with side=" + side);
-        for (int row = 0; row < side; row++) {
-            Assert.isTrue(initialState[row].length == side, "Puzzle must be square with side=" + side);
-        }
-    }
+    /**
+     * Validates state in a single pass and return the position of the blank
+     */
+    private static Position validate(int[][] state) {
+        int side = state.length;
+        Assert.isTrue(side > 0, "Puzzle's state cannot be empty");
 
-    private Position find(int number) {
+        Position blankPosition = null;
+        Set<Integer> seenNumbers = new HashSet<>();
+
         for (int row = 0; row < side; row++) {
+            Assert.isTrue(state[row].length == side, "Puzzle must be square with side=" + side);
+
             for (int column = 0; column < side; column++) {
-                if (tiles[row][column] == number) {
-                    return new Position(column, row);
+                int number = state[row][column];
+                Assert.isTrue(!seenNumbers.contains(number), "Puzzle cannot contain duplicate numbers");
+                seenNumbers.add(number);
+
+                if (number == 0) {
+                    blankPosition = new Position(column, row);
                 }
             }
         }
-        return null;
+
+        Assert.notNull(blankPosition, "There is no blank tile");
+        return blankPosition;
     }
 
     int[][] getTiles() {
