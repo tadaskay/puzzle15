@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {actions} from './api-index-actions';
 
 const propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired
 };
 
