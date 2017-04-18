@@ -14,12 +14,13 @@ number 1 is at the top-left corner and the empty one is at the bottom-right.
 
 Pre-requisites:
 
+- Node.js 6 (Optional)
 - JDK8
 - docker
 - docker-compose
 
 ```
-$ ./gradlew build
+$ ./gradlew build npmBuild
 $ docker-compose up
 ```
 
@@ -30,6 +31,8 @@ After startup, the following are accessible:
 
 ## Design notes
 
+- `puzzle-core` is Java based REST API for Puzzle
+- `puzzle-ui` is a Node.js app serving React.js UI for the puzzle
 - Game is fully controllable via truly RESTful API, using HAL links from 
 API root `/api`
 - Goal was simplicity without sacrificing foundation principles on class/package/API design
