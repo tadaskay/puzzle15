@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>15-puzzle</h1>
+        <h1>15 Puzzle</h1>
         {this.props.children}
       </div>
     );

@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import App from './App';
 import PuzzleCreator from '../puzzle/PuzzleCreator';
 import Board from '../puzzle/Board';
+import Keys from '../puzzle/Keys';
 
 export default class Root extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class Root extends Component {
         <App>
           <PuzzleCreator/>
           <Board/>
+          <Keys/>
         </App>
       </Provider>
     );
