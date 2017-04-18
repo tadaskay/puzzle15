@@ -1,8 +1,7 @@
-FROM openjdk:8u121-jdk
+FROM openjdk:8u121-jre
 
-ENV BUILD_HOME=/opt/build
-WORKDIR $BUILD_HOME
+WORKDIR /opt/app
+ADD build/libs/puzzle-core-1.0.jar app.jar
 
-ADD . $BUILD_HOME
-RUN ["chmod", "+x", "gradlew"]
-RUN ["./gradlew", "build"]
+EXPOSE 8080
+ENTRYPOINT java -jar app.jar

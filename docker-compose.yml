@@ -1,9 +1,10 @@
 version: '2.1'
 services:
   core:
-    build:
-      context: .
-      dockerfile: puzzle-core/Dockerfile
-    entrypoint: java -jar puzzle-core/build/libs/puzzle-core-1.0.jar
+    build: puzzle-core
+    environment:
+      EMBEDDED_MONGO_ARTIFACTS: /opt/app/.embedmongo
     ports:
       - 8080:8080
+    volumes:
+      - .embedmongo:/opt/app/.embedmongo
