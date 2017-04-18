@@ -13,7 +13,6 @@ export default function puzzleReducer(state = defaultState, action) {
     case types.MOVE + '_FULFILLED': {
       let puzzle = action.payload.data;
       let nonSelfLink = link => link.rel !== 'self';
-      console.log(puzzle);
       return Object.assign({}, state, {
         size: puzzle.size,
         complete: puzzle.complete,

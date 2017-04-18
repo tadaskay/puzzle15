@@ -20,7 +20,12 @@ class Keys extends React.Component {
     return (
       <div id="keys">
         {this.props.links.map(link => {
-          return (<div key={link.rel} onClick={() => this.move(link.rel)}>{link.href}</div>);
+          let direction = link.rel.replace('move-', '');
+          return (
+            <div className="key" key={link.rel} onClick={() => this.move(link.rel)}>
+              <i className={`fa fa-2x fa-chevron-${direction}`} aria-hidden="true"/>
+            </div>
+          );
         })}
       </div>
     );
