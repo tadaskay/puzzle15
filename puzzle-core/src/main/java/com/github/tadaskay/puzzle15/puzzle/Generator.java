@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 interface Generator {
+    Integer[][] createSolvedState();
     Integer[][] generateTiles();
 }
 
@@ -18,21 +19,25 @@ class DefaultGenerator implements Generator {
     private static final int USE_AS_BLANK = 0;
     private static final int SHUFFLE_ITERATIONS = 42;
     private static final Random random = new Random();
-    private final Integer[][] SOLVED_STATE;
 
     DefaultGenerator() {
-        SOLVED_STATE = new Integer[SIZE][SIZE];
+    }
+
+    @Override
+    public Integer[][] createSolvedState() {
+        Integer[][] solvedState = new Integer[SIZE][SIZE];
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                SOLVED_STATE[row][col] = row * SIZE + (col + 1);
+                solvedState[row][col] = row * SIZE + (col + 1);
             }
         }
-        SOLVED_STATE[SIZE - 1][SIZE - 1] = USE_AS_BLANK;
+        solvedState[SIZE - 1][SIZE - 1] = USE_AS_BLANK;
+        return solvedState;
     }
 
     @Override
     public Integer[][] generateTiles() {
-        Puzzle puzzle = Puzzle.create(SOLVED_STATE);
+        Puzzle puzzle = Puzzle.create(createSolvedState());
 
         for (int i = 0; i < SHUFFLE_ITERATIONS; i++) {
             List<Runnable> paths = availablePaths(puzzle);
