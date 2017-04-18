@@ -10,3 +10,5 @@ out
 *.ipr
 
 .embedmongo
+
+node_modules
