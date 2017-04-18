@@ -16,7 +16,7 @@ class PuzzleCreator extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="creator">
         <button onClick={() => this.createNewPuzzle()} type="button">New puzzle</button>
       </div>
     );

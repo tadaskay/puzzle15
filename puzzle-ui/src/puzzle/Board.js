@@ -15,16 +15,18 @@ class Board extends React.Component {
     if (!this.props.size) {
       return (<div className="board empty"/>)
     }
+
     let tileSize = 100 / this.props.size;
     let tileStyle = {
       flex: `1 0 ${tileSize}%`,
-      height: `${tileSize}%`,
-
+      height: `${tileSize}%`
     };
+
     return (
-      <div className="board">
+      <div id="board">
         {this.props.tiles.map((row) => {
           return row.map((number) => {
+
             let blank = number === 0;
             let tileClass = `tile ${blank ? 'blank' : ''}`;
             return (

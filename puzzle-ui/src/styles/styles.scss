@@ -14,7 +14,11 @@ body {
   text-align: center;
 }
 
-.board {
+#creator {
+  height: 50px;
+}
+
+#board {
   width: 400px;
   height: 400px;
   display: flex;
