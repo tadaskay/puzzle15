@@ -25,11 +25,16 @@ $ docker-compose up
 
 After startup, the following are accessible:
 
-API docs: http://localhost:8080/swagger-ui.html
-API: http://localhost:8080/api
+- API docs: http://localhost:8080/swagger-ui.html
+- API: http://localhost:8080/api
 
 ## Design notes
 
 - Game is fully controllable via truly RESTful API, using HAL links from 
 API root `/api`
 - Goal was simplicity without sacrificing foundation principles on class/package/API design
+
+## Credits
+
+- [15 puzzle solvability checks](http://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/)
+- [React slingshot boilerplate](https://github.com/coryhouse/react-slingshot)

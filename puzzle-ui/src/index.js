@@ -1,34 +1,29 @@
 /* eslint-disable import/default */
 
 import React from 'react';
-import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { AppContainer } from 'react-hot-loader';
-import Root from './components/Root';
+import {render} from 'react-dom';
+import {AppContainer} from 'react-hot-loader';
+import Root from './app/Root';
 
-import configureStore from './store/configureStore';
-require('./favicon.ico'); // Tell webpack to load favicon.ico
-import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
-import { syncHistoryWithStore } from 'react-router-redux';
+import configureStore from './configure-store';
+import './styles/styles.scss';
+require('./favicon.ico');
 
 const store = configureStore();
 
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store);
-
 render(
   <AppContainer>
-    <Root store={store} history={history} />
+    <Root store={store}/>
   </AppContainer>,
   document.getElementById('app')
 );
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const NewRoot = require('./components/Root').default;
+  module.hot.accept('./app/Root', () => {
+    const NewRoot = require('./app/Root').default;
     render(
       <AppContainer>
-        <NewRoot store={store} history={history} />
+        <NewRoot store={store}/>
       </AppContainer>,
       document.getElementById('app')
     );
