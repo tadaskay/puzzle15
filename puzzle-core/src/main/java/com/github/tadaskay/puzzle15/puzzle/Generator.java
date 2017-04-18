@@ -17,7 +17,7 @@ class DefaultGenerator implements Generator {
 
     private static final int SIZE = 4;
     private static final int USE_AS_BLANK = 0;
-    private static final int SHUFFLE_ITERATIONS = 42;
+    private static final int SHUFFLE_ITERATIONS = 142;
     private static final Random random = new Random();
 
     DefaultGenerator() {
