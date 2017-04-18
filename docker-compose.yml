@@ -8,3 +8,7 @@ services:
       - 8080:8080
     volumes:
       - .embedmongo:/opt/app/.embedmongo
+  ui:
+    build: puzzle-ui
+    ports:
+      - 3000:3000

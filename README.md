@@ -26,6 +26,7 @@ $ docker-compose up
 
 After startup, the following are accessible:
 
+- Game (React.js app): http://localhost:3000
 - API docs: http://localhost:8080/swagger-ui.html
 - API: http://localhost:8080/api
 
@@ -33,8 +34,7 @@ After startup, the following are accessible:
 
 - `puzzle-core` is Java based REST API for Puzzle
 - `puzzle-ui` is a Node.js app serving React.js UI for the puzzle
-- Game is fully controllable via truly RESTful API, using HAL links from 
-API root `/api`
+- Game is fully controllable/navigable via REST API, using HAL links from API root `/api`
 - Goal was simplicity without sacrificing foundation principles on class/package/API design
 
 ## Credits
