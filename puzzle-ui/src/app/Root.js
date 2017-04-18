@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import App from './App';
+import Victory from '../puzzle/Victory';
 import PuzzleCreator from '../puzzle/PuzzleCreator';
 import Board from '../puzzle/Board';
 import Keys from '../puzzle/Keys';
@@ -12,6 +13,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <App>
+          <Victory/>
           <PuzzleCreator/>
           <Board/>
           <Keys/>

@@ -10,13 +10,24 @@ body {
 
 h1 {
   font-family: 'Faster One', sans-serif;
-  font-size: 48px;
+  font-size: 64px;
 }
 
 #app {
   margin: 0 auto;
   width: 400px;
   text-align: center;
+}
+
+.success {
+  padding: 10px;
+  font-size: 44px;
+  background-color: #4caf50;
+  color: #eee;
+
+  .small {
+    font-size: 0.5em;
+  }
 }
 
 #creator {
