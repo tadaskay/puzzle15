@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {actions} from './puzzle-actions';
 
 const propTypes = {
+  newPuzzleUri: PropTypes.string,
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired
 };
 

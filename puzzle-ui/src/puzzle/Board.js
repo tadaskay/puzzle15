@@ -13,7 +13,7 @@ class Board extends React.Component {
 
   render() {
     if (!this.props.size) {
-      return (<div className="board empty"/>)
+      return (<div className="board empty"/>);
     }
 
     let tileSize = 100 / this.props.size;
@@ -31,13 +31,13 @@ class Board extends React.Component {
             let tileClass = `tile ${blank ? 'blank' : ''}`;
             return (
               <div key={number} style={tileStyle} className={tileClass}>
-                <div className='number'>{number !== 0 ? number : ''}</div>
-              </div>);
+                <div className="number">{number !== 0 ? number : ''}</div>
+              </div>
+            );
           });
         })}
       </div>
-    )
-      ;
+    );
   }
 }
 
