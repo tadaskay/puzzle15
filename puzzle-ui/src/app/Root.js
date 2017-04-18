@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import App from './App';
-import HomePage from './HomePage';
 import PuzzleCreator from '../puzzle/PuzzleCreator';
+import Board from '../puzzle/Board';
 
 export default class Root extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class Root extends Component {
       <Provider store={store}>
         <App>
           <PuzzleCreator/>
-          <HomePage/>
+          <Board/>
         </App>
       </Provider>
     );
