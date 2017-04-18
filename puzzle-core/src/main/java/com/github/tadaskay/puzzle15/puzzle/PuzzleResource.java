@@ -11,6 +11,7 @@ import static com.github.tadaskay.puzzle15.puzzle.PuzzleResource.Direction.*;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class PuzzleResource {
